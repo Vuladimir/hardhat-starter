@@ -6,12 +6,12 @@ contract Number {
 
   uint public mainNumber;
 
-  event NumberChanged(uint newNumber);
+  event NumberChanged(address indexed caller, uint newNumber);
 
   constructor() {}
 
   function incrementNumber() external {
     mainNumber += 1;
-    emit NumberChanged(mainNumber);
+    emit NumberChanged(msg.sender, mainNumber);
   }
 }
